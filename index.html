@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Route 700 Patronage Dashboard - March 2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin: 0 0 5px 0;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #666;
+            margin: 0 0 20px 0;
+            font-size: 16px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .metric {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .section h2 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .stops-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .stops-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .stops-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .stops-table tr:hover {
+            background: #f9f9f9;
+        }
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            width: 30px;
+        }
+        .passenger-bar {
+            display: inline-block;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        @media (max-width: 1000px) {
+            .content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Route 700 Patronage Dashboard</h1>
+            <p class="subtitle">01/03/2026 - 31/03/2026 | Gold Coast Transit</p>
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Passengers</div>
+                    <div class="metric-value">207,049</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Weekday (M-F)</div>
+                    <div class="metric-value">6.0</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Weekend</div>
+                    <div class="metric-value">6.4</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Tue-Thu</div>
+                    <div class="metric-value">5.9</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Unique Stops</div>
+                    <div class="metric-value">88</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Route Information</h2>
+                <p style="color: #666; font-size: 13px; margin: 0 0 15px 0;">
+                    <strong>Route 700</strong> is a major Gold Coast transit route running from 
+                    Tweed Heads in the south to Southport in the north.
+                </p>
+                <p style="color: #666; font-size: 13px; margin: 0 0 15px 0;">
+                    <strong>Key Stops:</strong><br>
+                    Tweed Heads • Coolangatta • Tugun • Kirra • Mermaid Beach • 
+                    Burleigh Heads • Tallebudgera • Broadbeach • Palm Beach • Southport
+                </p>
+                <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <p style="color: #666; font-size: 12px; margin: 0;">
+                        <strong>Service Notes:</strong><br>
+                        March is one of the highest patronage months. 
+                        Data includes both North and South bound journeys.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Key Insights</h2>
+                <table style="width: 100%; font-size: 13px; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; border: none;"><strong>Peak Day Type:</strong></td>
+                        <td style="padding: 8px; border: none; text-align: right;">Weekday (6.0 avg)</td>
+                    </tr>
+                    <tr style="background: #f5f5f5;">
+                        <td style="padding: 8px; border: none;"><strong>Total Journeys:</strong></td>
+                        <td style="padding: 8px; border: none; text-align: right;">33,924</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: none;"><strong>Weekday/Weekend:</strong></td>
+                        <td style="padding: 8px; border: none; text-align: right;">0.9x higher weekday</td>
+                    </tr>
+                    <tr style="background: #f5f5f5;">
+                        <td style="padding: 8px; border: none;"><strong>Data Period:</strong></td>
+                        <td style="padding: 8px; border: none; text-align: right;">01/03/2026 - 31/03/2026 (Full Month)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>All Stops - Ranked by Total Passengers</h2>
+            <table class="stops-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">#</th>
+                        <th>Boarding Stop</th>
+                        <th style="width: 120px;">Total Passengers</th>
+                        <th style="width: 100px;">Average</th>
+                        <th style="width: 80px;">Journeys</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank">1</td>
+                        <td>Broadbeach South station, stop A</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            52,501
+                        </td>
+                        <td style="text-align: center;">31.6</td>
+                        <td style="text-align: center;">1662</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">2</td>
+                        <td>Burleigh Heads station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            13,429
+                        </td>
+                        <td style="text-align: center;">30.5</td>
+                        <td style="text-align: center;">440</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">3</td>
+                        <td>Coolangatta Central</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            10,623
+                        </td>
+                        <td style="text-align: center;">7.7</td>
+                        <td style="text-align: center;">1383</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">4</td>
+                        <td>Gold Coast Hwy at Miami North station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            8,274
+                        </td>
+                        <td style="text-align: center;">10.3</td>
+                        <td style="text-align: center;">806</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">5</td>
+                        <td>Wharf St at Tweed Heads</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            6,269
+                        </td>
+                        <td style="text-align: center;">6.2</td>
+                        <td style="text-align: center;">1005</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">6</td>
+                        <td>Currumbin Wildlife Sanctuary</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            6,264
+                        </td>
+                        <td style="text-align: center;">6.5</td>
+                        <td style="text-align: center;">957</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">7</td>
+                        <td>Gold Coast Hwy at Burleigh Heads</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            5,680
+                        </td>
+                        <td style="text-align: center;">5.7</td>
+                        <td style="text-align: center;">988</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">8</td>
+                        <td>Twin Towns Services Club</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            5,282
+                        </td>
+                        <td style="text-align: center;">6.3</td>
+                        <td style="text-align: center;">842</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">9</td>
+                        <td>Palm Beach</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            5,221
+                        </td>
+                        <td style="text-align: center;">4.6</td>
+                        <td style="text-align: center;">1129</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">10</td>
+                        <td>Gold Coast Hwy at Miami Hotel</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            5,096
+                        </td>
+                        <td style="text-align: center;">16.5</td>
+                        <td style="text-align: center;">309</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">11</td>
+                        <td>Gold Coast Hwy at Mermaid Beach South station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            4,778
+                        </td>
+                        <td style="text-align: center;">5.7</td>
+                        <td style="text-align: center;">838</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">12</td>
+                        <td>Musgrave St at Kirra shops</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            4,419
+                        </td>
+                        <td style="text-align: center;">4.9</td>
+                        <td style="text-align: center;">903</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">13</td>
+                        <td>Golden Four Dr at Tugun Beach shops</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            4,235
+                        </td>
+                        <td style="text-align: center;">4.0</td>
+                        <td style="text-align: center;">1064</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">14</td>
+                        <td>Griffith St at Coolangatta East</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,800
+                        </td>
+                        <td style="text-align: center;">4.5</td>
+                        <td style="text-align: center;">851</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">15</td>
+                        <td>Burleigh Heads Primary School</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,673
+                        </td>
+                        <td style="text-align: center;">12.5</td>
+                        <td style="text-align: center;">294</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">16</td>
+                        <td>Gold Coast Hwy at Mermaid Beach station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,467
+                        </td>
+                        <td style="text-align: center;">4.3</td>
+                        <td style="text-align: center;">802</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">17</td>
+                        <td>Gold Coast Hwy at Miami station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,397
+                        </td>
+                        <td style="text-align: center;">5.7</td>
+                        <td style="text-align: center;">594</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">18</td>
+                        <td>Gold Coast Hwy at Nobby Beach station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,324
+                        </td>
+                        <td style="text-align: center;">4.2</td>
+                        <td style="text-align: center;">799</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">19</td>
+                        <td>Musgrave St at Coyne Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,168
+                        </td>
+                        <td style="text-align: center;">4.4</td>
+                        <td style="text-align: center;">717</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">20</td>
+                        <td>Gold Coast Hwy at Thrower Drive</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            3,039
+                        </td>
+                        <td style="text-align: center;">5.8</td>
+                        <td style="text-align: center;">522</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">21</td>
+                        <td>Gold Coast Hwy at Palm Beach Police Station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,949
+                        </td>
+                        <td style="text-align: center;">3.8</td>
+                        <td style="text-align: center;">766</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">22</td>
+                        <td>Nineteenth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,499
+                        </td>
+                        <td style="text-align: center;">3.4</td>
+                        <td style="text-align: center;">740</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">23</td>
+                        <td>Marine Pde at Kirra Beach Hotel</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,496
+                        </td>
+                        <td style="text-align: center;">4.1</td>
+                        <td style="text-align: center;">616</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">24</td>
+                        <td>Gold Coast Hwy at Anzac Pde CLOSED</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,305
+                        </td>
+                        <td style="text-align: center;">9.3</td>
+                        <td style="text-align: center;">249</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">25</td>
+                        <td>Gold Coast Hwy at Tallebudgera Tourist Park</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,253
+                        </td>
+                        <td style="text-align: center;">4.0</td>
+                        <td style="text-align: center;">565</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">26</td>
+                        <td>Burleigh Heads National Park</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,170
+                        </td>
+                        <td style="text-align: center;">4.2</td>
+                        <td style="text-align: center;">512</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">27</td>
+                        <td>Golden Four Dr at North Kirra Beach</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,160
+                        </td>
+                        <td style="text-align: center;">3.7</td>
+                        <td style="text-align: center;">590</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">28</td>
+                        <td>Twenty Seventh Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,149
+                        </td>
+                        <td style="text-align: center;">3.3</td>
+                        <td style="text-align: center;">646</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">29</td>
+                        <td>Tweed St at George Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            2,031
+                        </td>
+                        <td style="text-align: center;">3.5</td>
+                        <td style="text-align: center;">585</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">30</td>
+                        <td>Golden Four Drive at St Monica's Catholic Church</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,825
+                        </td>
+                        <td style="text-align: center;">2.6</td>
+                        <td style="text-align: center;">711</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">31</td>
+                        <td>Broadbeach South station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,814
+                        </td>
+                        <td style="text-align: center;">3.1</td>
+                        <td style="text-align: center;">592</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">32</td>
+                        <td>Golden Four Dr at George Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,794
+                        </td>
+                        <td style="text-align: center;">2.9</td>
+                        <td style="text-align: center;">619</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">33</td>
+                        <td>Gold Coast Hwy at Anzac Pde CLOSED from 26-04-26</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,712
+                        </td>
+                        <td style="text-align: center;">3.0</td>
+                        <td style="text-align: center;">564</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">34</td>
+                        <td>Marine Pde at Kirra Beach</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,708
+                        </td>
+                        <td style="text-align: center;">3.5</td>
+                        <td style="text-align: center;">487</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">35</td>
+                        <td>Gold Coast Hwy at Miami Hotel CLOSED</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,638
+                        </td>
+                        <td style="text-align: center;">3.2</td>
+                        <td style="text-align: center;">516</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">36</td>
+                        <td>Gold Coast Hwy at Eighth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,565
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">625</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">37</td>
+                        <td>Johnston Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,541
+                        </td>
+                        <td style="text-align: center;">2.8</td>
+                        <td style="text-align: center;">549</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">38</td>
+                        <td>Gold Coast Hwy at Twenty Fifth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,372
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">555</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">39</td>
+                        <td>Gold Coast Hwy at Fifteenth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,368
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">542</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">40</td>
+                        <td>Golden Four Dr at Shell Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,286
+                        </td>
+                        <td style="text-align: center;">2.4</td>
+                        <td style="text-align: center;">529</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">41</td>
+                        <td>Gold Coast Hwy at Fourth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,164
+                        </td>
+                        <td style="text-align: center;">2.8</td>
+                        <td style="text-align: center;">412</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">42</td>
+                        <td>Gold Coast Hwy at Twenty First Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 100px; background: #d63031;"></span>
+                            1,111
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">439</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">43</td>
+                        <td>Teemangum St at Kropp Park</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 92px; background: #d63031;"></span>
+                            926
+                        </td>
+                        <td style="text-align: center;">2.3</td>
+                        <td style="text-align: center;">396</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">44</td>
+                        <td>Golden Four Dr at Short Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 92px; background: #d63031;"></span>
+                            926
+                        </td>
+                        <td style="text-align: center;">2.1</td>
+                        <td style="text-align: center;">447</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">45</td>
+                        <td>Golden Four Dr at Archer Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 85px; background: #d63031;"></span>
+                            854
+                        </td>
+                        <td style="text-align: center;">3.8</td>
+                        <td style="text-align: center;">226</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">46</td>
+                        <td>Gold Coast Hwy at Currumbin Hill</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 72px; background: #d63031;"></span>
+                            724
+                        </td>
+                        <td style="text-align: center;">2.3</td>
+                        <td style="text-align: center;">314</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">47</td>
+                        <td>Golden Four Dr at Bilinga Beach</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 71px; background: #d63031;"></span>
+                            714
+                        </td>
+                        <td style="text-align: center;">2.1</td>
+                        <td style="text-align: center;">347</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">48</td>
+                        <td>Golden Four Dr at Bilinga Beach SLSC</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 58px; background: #d63031;"></span>
+                            582
+                        </td>
+                        <td style="text-align: center;">1.8</td>
+                        <td style="text-align: center;">318</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">49</td>
+                        <td>Gold Coast Hwy at Tenth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 56px; background: #d63031;"></span>
+                            565
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">229</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">50</td>
+                        <td>Surfers Paradise</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 54px; background: #d63031;"></span>
+                            547
+                        </td>
+                        <td style="text-align: center;">2.0</td>
+                        <td style="text-align: center;">280</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">51</td>
+                        <td>Cahill Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 46px; background: #f39c12;"></span>
+                            460
+                        </td>
+                        <td style="text-align: center;">2.4</td>
+                        <td style="text-align: center;">189</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">52</td>
+                        <td>Tweed St at George St</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 43px; background: #f39c12;"></span>
+                            438
+                        </td>
+                        <td style="text-align: center;">3.6</td>
+                        <td style="text-align: center;">123</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">53</td>
+                        <td>Gold Coast Hwy at Hythe St CLOSED</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 40px; background: #f39c12;"></span>
+                            409
+                        </td>
+                        <td style="text-align: center;">4.0</td>
+                        <td style="text-align: center;">101</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">54</td>
+                        <td>Gold Coast Hwy at Thirteenth Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 34px; background: #f39c12;"></span>
+                            340
+                        </td>
+                        <td style="text-align: center;">1.5</td>
+                        <td style="text-align: center;">230</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">55</td>
+                        <td>Broadbeach North station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 26px; background: #27ae60;"></span>
+                            266
+                        </td>
+                        <td style="text-align: center;">1.4</td>
+                        <td style="text-align: center;">184</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">56</td>
+                        <td>Wharf St at Tweed Mall</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 25px; background: #27ae60;"></span>
+                            252
+                        </td>
+                        <td style="text-align: center;">2.7</td>
+                        <td style="text-align: center;">94</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">57</td>
+                        <td>McLean St at Queen Elizabeth Park</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 25px; background: #27ae60;"></span>
+                            252
+                        </td>
+                        <td style="text-align: center;">2.4</td>
+                        <td style="text-align: center;">107</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">58</td>
+                        <td>SBL DH Stop1</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 18px; background: #27ae60;"></span>
+                            187
+                        </td>
+                        <td style="text-align: center;">6.2</td>
+                        <td style="text-align: center;">30</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">59</td>
+                        <td>GCUH, platform 4</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 18px; background: #27ae60;"></span>
+                            181
+                        </td>
+                        <td style="text-align: center;">1.7</td>
+                        <td style="text-align: center;">106</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">60</td>
+                        <td>Scarborough St at White Street</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 17px; background: #27ae60;"></span>
+                            176
+                        </td>
+                        <td style="text-align: center;">1.5</td>
+                        <td style="text-align: center;">114</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">61</td>
+                        <td>Broadbeach South station, stop C</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 16px; background: #27ae60;"></span>
+                            165
+                        </td>
+                        <td style="text-align: center;">1.4</td>
+                        <td style="text-align: center;">117</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">62</td>
+                        <td>Southport bus station, stop A</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 14px; background: #3498db;"></span>
+                            145
+                        </td>
+                        <td style="text-align: center;">1.8</td>
+                        <td style="text-align: center;">79</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">63</td>
+                        <td>Remembrance Dr at Markwell Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 12px; background: #3498db;"></span>
+                            124
+                        </td>
+                        <td style="text-align: center;">1.6</td>
+                        <td style="text-align: center;">76</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">64</td>
+                        <td>Varsity Pde at Assembly Drive</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 12px; background: #3498db;"></span>
+                            123
+                        </td>
+                        <td style="text-align: center;">41.0</td>
+                        <td style="text-align: center;">3</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">65</td>
+                        <td>Ferny Ave at Palm Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 10px; background: #3498db;"></span>
+                            109
+                        </td>
+                        <td style="text-align: center;">1.5</td>
+                        <td style="text-align: center;">73</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">66</td>
+                        <td>Gold Coast Hwy at Third Avenue CLOSED until 26-04-26</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 7px; background: #3498db;"></span>
+                            79
+                        </td>
+                        <td style="text-align: center;">1.6</td>
+                        <td style="text-align: center;">48</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">67</td>
+                        <td>Griffith University, platform 4</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 7px; background: #3498db;"></span>
+                            78
+                        </td>
+                        <td style="text-align: center;">2.4</td>
+                        <td style="text-align: center;">33</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">68</td>
+                        <td>Gold Coast Hwy at Florida Gardens station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 7px; background: #3498db;"></span>
+                            76
+                        </td>
+                        <td style="text-align: center;">1.2</td>
+                        <td style="text-align: center;">64</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">69</td>
+                        <td>Southport Medical Precinct</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 7px; background: #3498db;"></span>
+                            72
+                        </td>
+                        <td style="text-align: center;">1.2</td>
+                        <td style="text-align: center;">59</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">70</td>
+                        <td>Queen Street station (Southport)</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 6px; background: #3498db;"></span>
+                            63
+                        </td>
+                        <td style="text-align: center;">1.3</td>
+                        <td style="text-align: center;">49</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">71</td>
+                        <td>Gold Coast Hwy at Christine Avenue station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 5px; background: #3498db;"></span>
+                            53
+                        </td>
+                        <td style="text-align: center;">1.8</td>
+                        <td style="text-align: center;">30</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">72</td>
+                        <td>Unknown</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 4px; background: #3498db;"></span>
+                            49
+                        </td>
+                        <td style="text-align: center;">3.3</td>
+                        <td style="text-align: center;">15</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">73</td>
+                        <td>Ferny Ave at Ocean Avenue</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 4px; background: #3498db;"></span>
+                            41
+                        </td>
+                        <td style="text-align: center;">1.2</td>
+                        <td style="text-align: center;">34</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">74</td>
+                        <td>Elizabeth Av at Oracle Boulevard</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 4px; background: #3498db;"></span>
+                            41
+                        </td>
+                        <td style="text-align: center;">20.5</td>
+                        <td style="text-align: center;">2</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">75</td>
+                        <td>Ada Bell Way at Broadwater Parklands station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 3px; background: #3498db;"></span>
+                            38
+                        </td>
+                        <td style="text-align: center;">1.8</td>
+                        <td style="text-align: center;">21</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">76</td>
+                        <td>Remembrance Drive at Surfers Paradise Bvd</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 3px; background: #3498db;"></span>
+                            32
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">13</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">77</td>
+                        <td>Southport bus station, stop B</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 2px; background: #3498db;"></span>
+                            23
+                        </td>
+                        <td style="text-align: center;">1.2</td>
+                        <td style="text-align: center;">19</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">78</td>
+                        <td>Gold Coast Hwy at Second Avenue station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 2px; background: #3498db;"></span>
+                            22
+                        </td>
+                        <td style="text-align: center;">2.8</td>
+                        <td style="text-align: center;">8</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">79</td>
+                        <td>Broadbeach South station, stop D</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 2px; background: #3498db;"></span>
+                            20
+                        </td>
+                        <td style="text-align: center;">2.5</td>
+                        <td style="text-align: center;">8</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">80</td>
+                        <td>Main Beach station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 1px; background: #3498db;"></span>
+                            15
+                        </td>
+                        <td style="text-align: center;">1.1</td>
+                        <td style="text-align: center;">14</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">81</td>
+                        <td>Pacific Fair, stop C</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 1px; background: #3498db;"></span>
+                            10
+                        </td>
+                        <td style="text-align: center;">10.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">82</td>
+                        <td>Burleigh Heads Primary School CLOSED PERMANENTLY</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            6
+                        </td>
+                        <td style="text-align: center;">6.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">83</td>
+                        <td>Scottsdale Dr near Reedy Creek Rd</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            6
+                        </td>
+                        <td style="text-align: center;">3.0</td>
+                        <td style="text-align: center;">2</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">84</td>
+                        <td>GC Hwy at Palm Beach Hotel CLOSED 6 Oct - 20 Dec 2027</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            4
+                        </td>
+                        <td style="text-align: center;">4.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">85</td>
+                        <td>Griffith University, platform 3</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            2
+                        </td>
+                        <td style="text-align: center;">1.0</td>
+                        <td style="text-align: center;">2</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">86</td>
+                        <td>Robina station, stop C</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            2
+                        </td>
+                        <td style="text-align: center;">2.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">87</td>
+                        <td>Varsity Lakes station</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            2
+                        </td>
+                        <td style="text-align: center;">2.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">88</td>
+                        <td>Robina Town Centre</td>
+                        <td style="text-align: right;">
+                            <span class="passenger-bar" style="width: 0px; background: #3498db;"></span>
+                            1
+                        </td>
+                        <td style="text-align: center;">1.0</td>
+                        <td style="text-align: center;">1</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #d63031;"></div>
+                    <span>High (500+)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #f39c12;"></div>
+                    <span>Medium-High (300-499)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #27ae60;"></div>
+                    <span>Medium (150-299)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: #3498db;"></div>
+                    <span>Low (&lt;150)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

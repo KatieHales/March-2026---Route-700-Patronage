@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" style="background: #f5f5f5;">
+  <!-- Placeholder for Route 700 Map -->
+  <defs>
+    <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006400;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="900" fill="#f0f8ff"/>
+  
+  <!-- Title -->
+  <rect x="20" y="20" width="560" height="60" fill="#FF1493" rx="5"/>
+  <text x="300" y="55" font-size="32" font-weight="bold" fill="white" text-anchor="middle">Route 700, 777 - Route Map</text>
+  
+  <!-- Legend Box -->
+  <rect x="420" y="100" width="160" height="180" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="120" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Key</text>
+  
+  <line x1="430" y1="130" x2="480" y2="130" stroke="#90EE90" stroke-width="3"/>
+  <text x="490" y="135" font-size="12" fill="#333">Route 700</text>
+  
+  <line x1="430" y1="155" x2="480" y2="155" stroke="#FFD700" stroke-width="3"/>
+  <text x="490" y="160" font-size="12" fill="#333">Route 777</text>
+  
+  <circle cx="455" cy="185" r="6" fill="#FF6347"/>
+  <text x="490" y="190" font-size="12" fill="#333">Bus Stop</text>
+  
+  <circle cx="455" cy="210" r="6" fill="#4169E1"/>
+  <text x="490" y="215" font-size="12" fill="#333">Interchange</text>
+  
+  <circle cx="455" cy="235" r="4" fill="#FF1493"/>
+  <text x="490" y="240" font-size="12" fill="#333">Station</text>
+  
+  <!-- Main route line (green) - Route 700 -->
+  <path d="M 100 150 Q 150 200, 200 250 T 300 400 T 300 700" stroke="url(#routeGradient)" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- Secondary route (gold) - Route 777 -->
+  <path d="M 300 700 Q 350 750, 400 800" stroke="#FFD700" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- Major stops along Route 700 -->
+  <g id="stops">
+    <!-- Northbound stops -->
+    <circle cx="100" cy="150" r="6" fill="#FF6347"/>
+    <text x="110" y="155" font-size="11" fill="#333">Gold Coast Hwy</text>
+    
+    <circle cx="150" cy="200" r="6" fill="#FF6347"/>
+    <text x="160" y="205" font-size="11" fill="#333">Southport</text>
+    
+    <circle cx="200" cy="250" r="6" fill="#FF6347"/>
+    <text x="210" y="255" font-size="11" fill="#333">Broadbeach</text>
+    
+    <circle cx="250" cy="320" r="6" fill="#FF6347"/>
+    <text x="260" y="325" font-size="11" fill="#333">Surfers Paradise</text>
+    
+    <circle cx="280" cy="400" r="7" fill="#4169E1"/>
+    <text x="290" y="405" font-size="11" fill="#333">Main Beach</text>
+    
+    <circle cx="300" cy="500" r="6" fill="#FF6347"/>
+    <text x="310" y="505" font-size="11" fill="#333">Mermaid Beach</text>
+    
+    <circle cx="300" cy="600" r="6" fill="#FF6347"/>
+    <text x="310" y="605" font-size="11" fill="#333">Burleigh Heads</text>
+    
+    <!-- Southbound stops -->
+    <circle cx="300" cy="700" r="7" fill="#4169E1"/>
+    <text x="310" y="705" font-size="11" fill="#333">Palm Beach</text>
+    
+    <circle cx="350" cy="750" r="6" fill="#FF6347"/>
+    <text x="360" y="755" font-size="11" fill="#333">Currumbin</text>
+    
+    <circle cx="400" cy="800" r="6" fill="#FF6347"/>
+    <text x="410" y="805" font-size="11" fill="#333">Tweed Heads</text>
+  </g>
+  
+  <!-- Info panels -->
+  <rect x="20" y="750" width="270" height="130" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="155" y="770" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Route 700</text>
+  <text x="30" y="790" font-size="11" fill="#333">Service: Monday-Sunday</text>
+  <text x="30" y="810" font-size="11" fill="#333">Area: Gold Coast to Tweed Heads</text>
+  <text x="30" y="830" font-size="11" fill="#333">Stops: 88 across service area</text>
+  <text x="30" y="850" font-size="11" fill="#333">Peak: Weekday 9.5 avg/journey</text>
+  
+  <rect x="310" y="750" width="270" height="130" fill="white" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="445" y="770" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Route 777</text>
+  <text x="320" y="790" font-size="11" fill="#333">Service: Monday-Sunday</text>
+  <text x="320" y="810" font-size="11" fill="#333">Area: Tweed Heads extension</text>
+  <text x="320" y="830" font-size="11" fill="#333">Stops: Part of integrated network</text>
+  <text x="320" y="850" font-size="11" fill="#333">Link: Sunday midnight + service</text>
+</svg>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Route 700 Patronage Dashboard - Interactive</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .filter-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .filter-section {
+            margin-bottom: 20px;
+        }
+        
+        .filter-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .metric {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .metric:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .chart-container h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .map-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .map-container h3 {
+            color: #667eea;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .route-map {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .stop-detail {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .stop-detail h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .stop-info {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .info-value {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-bottom: 10px;
+        }
+        
+        .table-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .table-container h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .search-box {
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        th:hover {
+            background: #5568d3;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .status-high {
+            color: #d63031;
+            font-weight: bold;
+        }
+        
+        .status-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .status-low {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .bar {
+            display: inline-block;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 8px;
+            background: #667eea;
+        }
+        
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚌 Route 700 Patronage Dashboard</h1>
+            <p class="subtitle">01/03/2026 - 31/03/2026 | Gold Coast Transit | Interactive Analysis</p>
+            
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">Total Passengers</div>
+                    <div class="metric-value">207,049</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Weekday (M-F)</div>
+                    <div class="metric-value">6.0</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Weekend</div>
+                    <div class="metric-value">6.4</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Avg Tue-Thu</div>
+                    <div class="metric-value">5.9</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Unique Stops</div>
+                    <div class="metric-value">88</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Daily Patronage Trend</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3>Day of Week Comparison</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dowChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Patronage by Day Type</h3>
+                <div class="chart-wrapper">
+                    <canvas id="dayTypeChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <h3>Top 15 Stops</h3>
+                <div class="chart-wrapper">
+                    <canvas id="topStopsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <h3>All Stops Details</h3>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search stops...">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Boarding Stop</th>
+                        <th>Total Passengers</th>
+                        <th>Average</th>
+                        <th>Journeys</th>
+                    </tr>
+                </thead>
+                <tbody id="stopsTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        // Data
+        const dailyData = [{"Date":"01\/03","Passengers":5019},{"Date":"02\/03","Passengers":5068},{"Date":"03\/03","Passengers":5862},{"Date":"04\/03","Passengers":6603},{"Date":"05\/03","Passengers":6208},{"Date":"06\/03","Passengers":7160},{"Date":"07\/03","Passengers":7548},{"Date":"08\/03","Passengers":4506},{"Date":"09\/03","Passengers":5360},{"Date":"10\/03","Passengers":6521},{"Date":"11\/03","Passengers":7049},{"Date":"12\/03","Passengers":6805},{"Date":"13\/03","Passengers":6217},{"Date":"14\/03","Passengers":7265},{"Date":"15\/03","Passengers":5518},{"Date":"16\/03","Passengers":5768},{"Date":"17\/03","Passengers":6385},{"Date":"18\/03","Passengers":5961},{"Date":"19\/03","Passengers":6314},{"Date":"20\/03","Passengers":8038},{"Date":"21\/03","Passengers":7538},{"Date":"22\/03","Passengers":6372},{"Date":"23\/03","Passengers":6876},{"Date":"24\/03","Passengers":6917},{"Date":"25\/03","Passengers":7891},{"Date":"26\/03","Passengers":7961},{"Date":"27\/03","Passengers":9378},{"Date":"28\/03","Passengers":9261},{"Date":"29\/03","Passengers":7256},{"Date":"30\/03","Passengers":6880},{"Date":"31\/03","Passengers":5544}];
+        const dowData = [{"DayName":"Monday","sum":29952,"mean":5.7611079054},{"DayName":"Tuesday","sum":31229,"mean":5.5925859599},{"DayName":"Wednesday","sum":27504,"mean":6.0528169014},{"DayName":"Thursday","sum":27288,"mean":6.0425155004},{"DayName":"Friday","sum":30793,"mean":6.5740819812},{"DayName":"Saturday","sum":31612,"mean":7.2872291379},{"DayName":"Sunday","sum":28671,"mean":5.6673255584}];
+        const dayTypeData = [{"DayType":"Weekday","sum":146766,"mean":5.9838545277},{"DayType":"Weekend","sum":60283,"mean":6.4151324891}];
+        const topStopsData = [{"Boarding Stop":"Burleigh Heads Primary School","Passengers":3673},{"Boarding Stop":"Griffith St at Coolangatta East","Passengers":3800},{"Boarding Stop":"Golden Four Dr at Tugun Beach shops","Passengers":4235},{"Boarding Stop":"Musgrave St at Kirra shops","Passengers":4419},{"Boarding Stop":"Gold Coast Hwy at Mermaid Beach South station","Passengers":4778},{"Boarding Stop":"Gold Coast Hwy at Miami Hotel","Passengers":5096},{"Boarding Stop":"Palm Beach","Passengers":5221},{"Boarding Stop":"Twin Towns Services Club","Passengers":5282},{"Boarding Stop":"Gold Coast Hwy at Burleigh Heads","Passengers":5680},{"Boarding Stop":"Currumbin Wildlife Sanctuary","Passengers":6264},{"Boarding Stop":"Wharf St at Tweed Heads","Passengers":6269},{"Boarding Stop":"Gold Coast Hwy at Miami North station","Passengers":8274},{"Boarding Stop":"Coolangatta Central","Passengers":10623},{"Boarding Stop":"Burleigh Heads station","Passengers":13429},{"Boarding Stop":"Broadbeach South station, stop A","Passengers":52501}];
+        const allStopsData = [{"Stop":"Broadbeach South station, stop A","Total":52501,"Average":31.5890493381,"Journeys":1662},{"Stop":"Burleigh Heads station","Total":13429,"Average":30.5204545455,"Journeys":440},{"Stop":"Coolangatta Central","Total":10623,"Average":7.6811279826,"Journeys":1383},{"Stop":"Gold Coast Hwy at Miami North station","Total":8274,"Average":10.2655086849,"Journeys":806},{"Stop":"Wharf St at Tweed Heads","Total":6269,"Average":6.2378109453,"Journeys":1005},{"Stop":"Currumbin Wildlife Sanctuary","Total":6264,"Average":6.5454545455,"Journeys":957},{"Stop":"Gold Coast Hwy at Burleigh Heads","Total":5680,"Average":5.7489878543,"Journeys":988},{"Stop":"Twin Towns Services Club","Total":5282,"Average":6.2731591449,"Journeys":842},{"Stop":"Palm Beach","Total":5221,"Average":4.6244464128,"Journeys":1129},{"Stop":"Gold Coast Hwy at Miami Hotel","Total":5096,"Average":16.4919093851,"Journeys":309},{"Stop":"Gold Coast Hwy at Mermaid Beach South station","Total":4778,"Average":5.7016706444,"Journeys":838},{"Stop":"Musgrave St at Kirra shops","Total":4419,"Average":4.8936877076,"Journeys":903},{"Stop":"Golden Four Dr at Tugun Beach shops","Total":4235,"Average":3.9802631579,"Journeys":1064},{"Stop":"Griffith St at Coolangatta East","Total":3800,"Average":4.4653349001,"Journeys":851},{"Stop":"Burleigh Heads Primary School","Total":3673,"Average":12.4931972789,"Journeys":294},{"Stop":"Gold Coast Hwy at Mermaid Beach station","Total":3467,"Average":4.3229426434,"Journeys":802},{"Stop":"Gold Coast Hwy at Miami station","Total":3397,"Average":5.7188552189,"Journeys":594},{"Stop":"Gold Coast Hwy at Nobby Beach station","Total":3324,"Average":4.1602002503,"Journeys":799},{"Stop":"Musgrave St at Coyne Street","Total":3168,"Average":4.4184100418,"Journeys":717},{"Stop":"Gold Coast Hwy at Thrower Drive","Total":3039,"Average":5.8218390805,"Journeys":522},{"Stop":"Gold Coast Hwy at Palm Beach Police Station","Total":2949,"Average":3.8498694517,"Journeys":766},{"Stop":"Nineteenth Avenue","Total":2499,"Average":3.377027027,"Journeys":740},{"Stop":"Marine Pde at Kirra Beach Hotel","Total":2496,"Average":4.0519480519,"Journeys":616},{"Stop":"Gold Coast Hwy at Anzac Pde CLOSED","Total":2305,"Average":9.2570281124,"Journeys":249},{"Stop":"Gold Coast Hwy at Tallebudgera Tourist Park","Total":2253,"Average":3.9876106195,"Journeys":565},{"Stop":"Burleigh Heads National Park","Total":2170,"Average":4.23828125,"Journeys":512},{"Stop":"Golden Four Dr at North Kirra Beach","Total":2160,"Average":3.6610169492,"Journeys":590},{"Stop":"Twenty Seventh Avenue","Total":2149,"Average":3.326625387,"Journeys":646},{"Stop":"Tweed St at George Street","Total":2031,"Average":3.4717948718,"Journeys":585},{"Stop":"Golden Four Drive at St Monica's Catholic Church","Total":1825,"Average":2.5668073136,"Journeys":711},{"Stop":"Broadbeach South station","Total":1814,"Average":3.0641891892,"Journeys":592},{"Stop":"Golden Four Dr at George Street","Total":1794,"Average":2.8982229402,"Journeys":619},{"Stop":"Gold Coast Hwy at Anzac Pde CLOSED from 26-04-26","Total":1712,"Average":3.0354609929,"Journeys":564},{"Stop":"Marine Pde at Kirra Beach","Total":1708,"Average":3.5071868583,"Journeys":487},{"Stop":"Gold Coast Hwy at Miami Hotel CLOSED","Total":1638,"Average":3.1744186047,"Journeys":516},{"Stop":"Gold Coast Hwy at Eighth Avenue","Total":1565,"Average":2.504,"Journeys":625},{"Stop":"Johnston Street","Total":1541,"Average":2.8069216758,"Journeys":549},{"Stop":"Gold Coast Hwy at Twenty Fifth Avenue","Total":1372,"Average":2.4720720721,"Journeys":555},{"Stop":"Gold Coast Hwy at Fifteenth Avenue","Total":1368,"Average":2.5239852399,"Journeys":542},{"Stop":"Golden Four Dr at Shell Street","Total":1286,"Average":2.4310018904,"Journeys":529},{"Stop":"Gold Coast Hwy at Fourth Avenue","Total":1164,"Average":2.8252427184,"Journeys":412},{"Stop":"Gold Coast Hwy at Twenty First Avenue","Total":1111,"Average":2.5307517084,"Journeys":439},{"Stop":"Teemangum St at Kropp Park","Total":926,"Average":2.3383838384,"Journeys":396},{"Stop":"Golden Four Dr at Short Street","Total":926,"Average":2.0715883669,"Journeys":447},{"Stop":"Golden Four Dr at Archer Street","Total":854,"Average":3.7787610619,"Journeys":226},{"Stop":"Gold Coast Hwy at Currumbin Hill","Total":724,"Average":2.3057324841,"Journeys":314},{"Stop":"Golden Four Dr at Bilinga Beach","Total":714,"Average":2.0576368876,"Journeys":347},{"Stop":"Golden Four Dr at Bilinga Beach SLSC","Total":582,"Average":1.8301886792,"Journeys":318},{"Stop":"Gold Coast Hwy at Tenth Avenue","Total":565,"Average":2.4672489083,"Journeys":229},{"Stop":"Surfers Paradise","Total":547,"Average":1.9535714286,"Journeys":280},{"Stop":"Cahill Street","Total":460,"Average":2.4338624339,"Journeys":189},{"Stop":"Tweed St at George St","Total":438,"Average":3.5609756098,"Journeys":123},{"Stop":"Gold Coast Hwy at Hythe St CLOSED","Total":409,"Average":4.0495049505,"Journeys":101},{"Stop":"Gold Coast Hwy at Thirteenth Avenue","Total":340,"Average":1.4782608696,"Journeys":230},{"Stop":"Broadbeach North station","Total":266,"Average":1.4456521739,"Journeys":184},{"Stop":"Wharf St at Tweed Mall","Total":252,"Average":2.6808510638,"Journeys":94},{"Stop":"McLean St at Queen Elizabeth Park","Total":252,"Average":2.3551401869,"Journeys":107},{"Stop":"SBL DH Stop1","Total":187,"Average":6.2333333333,"Journeys":30},{"Stop":"GCUH, platform 4","Total":181,"Average":1.7075471698,"Journeys":106},{"Stop":"Scarborough St at White Street","Total":176,"Average":1.5438596491,"Journeys":114},{"Stop":"Broadbeach South station, stop C","Total":165,"Average":1.4102564103,"Journeys":117},{"Stop":"Southport bus station, stop A","Total":145,"Average":1.835443038,"Journeys":79},{"Stop":"Remembrance Dr at Markwell Avenue","Total":124,"Average":1.6315789474,"Journeys":76},{"Stop":"Varsity Pde at Assembly Drive","Total":123,"Average":41.0,"Journeys":3},{"Stop":"Ferny Ave at Palm Avenue","Total":109,"Average":1.4931506849,"Journeys":73},{"Stop":"Gold Coast Hwy at Third Avenue CLOSED until 26-04-26","Total":79,"Average":1.6458333333,"Journeys":48},{"Stop":"Griffith University, platform 4","Total":78,"Average":2.3636363636,"Journeys":33},{"Stop":"Gold Coast Hwy at Florida Gardens station","Total":76,"Average":1.1875,"Journeys":64},{"Stop":"Southport Medical Precinct","Total":72,"Average":1.2203389831,"Journeys":59},{"Stop":"Queen Street station (Southport)","Total":63,"Average":1.2857142857,"Journeys":49},{"Stop":"Gold Coast Hwy at Christine Avenue station","Total":53,"Average":1.7666666667,"Journeys":30},{"Stop":"Unknown","Total":49,"Average":3.2666666667,"Journeys":15},{"Stop":"Ferny Ave at Ocean Avenue","Total":41,"Average":1.2058823529,"Journeys":34},{"Stop":"Elizabeth Av at Oracle Boulevard","Total":41,"Average":20.5,"Journeys":2},{"Stop":"Ada Bell Way at Broadwater Parklands station","Total":38,"Average":1.8095238095,"Journeys":21},{"Stop":"Remembrance Drive at Surfers Paradise Bvd","Total":32,"Average":2.4615384615,"Journeys":13},{"Stop":"Southport bus station, stop B","Total":23,"Average":1.2105263158,"Journeys":19},{"Stop":"Gold Coast Hwy at Second Avenue station","Total":22,"Average":2.75,"Journeys":8},{"Stop":"Broadbeach South station, stop D","Total":20,"Average":2.5,"Journeys":8},{"Stop":"Main Beach station","Total":15,"Average":1.0714285714,"Journeys":14},{"Stop":"Pacific Fair, stop C","Total":10,"Average":10.0,"Journeys":1},{"Stop":"Burleigh Heads Primary School CLOSED PERMANENTLY","Total":6,"Average":6.0,"Journeys":1},{"Stop":"Scottsdale Dr near Reedy Creek Rd","Total":6,"Average":3.0,"Journeys":2},{"Stop":"GC Hwy at Palm Beach Hotel CLOSED 6 Oct - 20 Dec 2027","Total":4,"Average":4.0,"Journeys":1},{"Stop":"Griffith University, platform 3","Total":2,"Average":1.0,"Journeys":2},{"Stop":"Robina station, stop C","Total":2,"Average":2.0,"Journeys":1},{"Stop":"Varsity Lakes station","Total":2,"Average":2.0,"Journeys":1},{"Stop":"Robina Town Centre","Total":1,"Average":1.0,"Journeys":1}];
+        
+        // Daily Chart
+        const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+        new Chart(dailyCtx, {
+            type: 'line',
+            data: {
+                labels: dailyData.map(d => d.Date),
+                datasets: [{
+                    label: 'Daily Passengers',
+                    data: dailyData.map(d => d.Passengers),
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#667eea',
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { font: { size: 12 } }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { size: 11 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+        
+        // Day of Week Chart
+        const dowCtx = document.getElementById('dowChart').getContext('2d');
+        new Chart(dowCtx, {
+            type: 'bar',
+            data: {
+                labels: dowData.map(d => d.DayName),
+                datasets: [{
+                    label: 'Total Passengers',
+                    data: dowData.map(d => d['sum']),
+                    backgroundColor: ['#3498db', '#27ae60', '#f39c12', '#e74c3c', '#9b59b6', '#1abc9c', '#e67e22'],
+                    borderColor: ['#2980b9', '#229954', '#d68910', '#c0392b', '#8e44ad', '#16a085', '#d35400'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { size: 11 } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+        
+        // Day Type Chart
+        const dayTypeCtx = document.getElementById('dayTypeChart').getContext('2d');
+        new Chart(dayTypeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: dayTypeData.map(d => d.DayType),
+                datasets: [{
+                    data: dayTypeData.map(d => d['sum']),
+                    backgroundColor: ['#667eea', '#f39c12'],
+                    borderColor: ['#5568d3', '#d68910'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+        
+        // Top Stops Chart
+        const topStopsCtx = document.getElementById('topStopsChart').getContext('2d');
+        new Chart(topStopsCtx, {
+            type: 'barH',
+            type: 'bar',
+            data: {
+                labels: topStopsData.map(d => d['Boarding Stop']),
+                datasets: [{
+                    label: 'Total Passengers',
+                    data: topStopsData.map(d => d.Passengers),
+                    backgroundColor: '#667eea',
+                    borderColor: '#5568d3',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: { font: { size: 11 } }
+                    },
+                    y: {
+                        ticks: { font: { size: 10 } }
+                    }
+                }
+            }
+        });
+        
+        // Populate table
+        function populateTable(data) {
+            const tbody = document.getElementById('stopsTable');
+            tbody.innerHTML = '';
+            data.forEach((stop, idx) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${idx + 1}</td>
+                    <td>${stop.Stop}</td>
+                    <td>${Math.round(stop.Total).toLocaleString()}</td>
+                    <td>${stop.Average.toFixed(1)}</td>
+                    <td>${Math.round(stop.Journeys)}</td>
+                `;
+            });
+        }
+        
+        populateTable(allStopsData);
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keyup', (e) => {
+            const filtered = allStopsData.filter(stop => 
+                stop.Stop.toLowerCase().includes(e.target.value.toLowerCase())
+            );
+            populateTable(filtered);
+        });
+    </script>
+</body>
+</html>
